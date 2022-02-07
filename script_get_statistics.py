@@ -44,8 +44,8 @@ def get_data(file_path, interval):
 def save_data(data, data_file):
     """Функция записывает данные в файл csv"""
 
-    with open(data_file, 'a') as table:
-        writer = csv.writer(table)
+    with open(data_file, 'a', encoding='utf-8') as table:
+        writer = csv.writer(table, delimiter=",", lineterminator="\r")
         writer.writerow(data)
 
 
