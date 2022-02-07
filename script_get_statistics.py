@@ -17,11 +17,11 @@ def get_data(file_path, interval):
     создает файл для хранения метрик и вносит метрики в файл"""
 
     # инициализация процесса
-    start_process = subprocess.Popen(file_path)
+    start_process = subprocess.Popen(file_path, shell=True)
     process = psutil.Process(start_process.pid)
 
     # инициализация уникального имени для файла с метриками
-    name_data = f'{process.name().replace(".", "_")}_{time.strftime("%Y%m%d_%H%M%S", time.gmtime(process.create_time()))}.csv'
+    name_data = f'{process.name().replace(".", "_")}_{time.strftime("%Y%m%d_%H%M%S")}.csv'
 
     # внесение названий столбцов в файл метрик
     result = ['CPU_usage', 'Working_set', 'Private_bytes', 'Open_hendlers']
